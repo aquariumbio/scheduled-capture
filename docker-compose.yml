@@ -1,0 +1,17 @@
+versions: "3.5"
+services:
+  database-backup:
+    build:
+      context: .
+      target: database-backup
+    image: aquariumbio/database-backup:${VERSION}
+    environment: 
+      MYSQL_HOST: ${DB_HOST}
+      MYSQL_PORT: ${DB_PORT}      
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - backup-dir:/opt/mysql/backup
+    restart: always
