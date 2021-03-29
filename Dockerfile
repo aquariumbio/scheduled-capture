@@ -4,7 +4,7 @@ FROM alpine:${ALPINE_VERSION}
 
 ENV BACKUP_FOLDER /opt/mysql/backup
 
-RUN apk add --update --no-cache mysql-client>10.5.8 \
+RUN apk add --update --no-cache mysql-client>=10.5.8 \
  && mkdir -p ${BACKUP_FOLDER}
 
 COPY ./scripts/daily/* /etc/periodic/daily
